@@ -125,3 +125,4 @@ function startCamera() {
     alert('camera access denied');
   });
 }
+
