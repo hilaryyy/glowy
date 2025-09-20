@@ -88,39 +88,3 @@ function updatePhotoColor() {
   display.style.boxShadow = `0 0 80px 30px ${color}`;
 }
 
-function startCamera() {
-  const video = document.getElementById('camera');
-  navigator.mediaDevices.getUserMedia({
-    video: { facingMode: 'user' }
-  })
-  .then(stream => {
-    video.srcObject = stream;
-    video.classList.add('mirrored');
-  })
-  .catch(() => {
-    alert('camera access denied');
-  });
-}
-
-function takePhoto() {
-  const timer = parseInt(document.getElementById('photoTimer').value);
-  setTimeout(() => {
-    const video = document.getElementById('camera');
-    const canvas = document.getElementById('snapshot');
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    const ctx = canvas.getContext('2d');
-
-    // mirror the photo output to match preview
-    ctx.translate(canvas.width, 0);
-    ctx.scale(-1, 1);
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-    canvas.toBlob(blob => {
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = 'glowy-photo.png';
-      link.click();
-    }, 'image/png');
-  }, timer * 1000);
-}
