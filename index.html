@@ -17,7 +17,6 @@
       <div class="mode-card mood-btn" onclick="showMode('mood')">mood light</div>
       <div class="mode-card strobe-btn" onclick="showMode('strobe')">strobe lights</div>
       <div class="mode-card gradient-btn" onclick="showMode('gradient')">gradient</div>
-      <div class="mode-card photo-btn" onclick="showMode('photo')">photo mode</div>
     </div>
   </div>
 
@@ -66,25 +65,7 @@
     <div id="gradientDisplay" class="full-screen"></div>
   </div>
 
-  <div id="photo" class="screen hidden">
-    <div class="controls">
-      <input type="color" id="photoColor" value="#709dff" onchange="updatePhotoColor()" />
-      <button onclick="startCamera()">start camera</button>
-      <button onclick="toggleSettings('photoSettings')">settings</button>
-      <button onclick="goHome()">home</button>
-    </div>
-    <div id="photoSettings" class="settings hidden">
-      <label>timer (seconds)</label>
-      <input type="number" id="photoTimer" min="0" max="10" value="0" />
-    </div>
-    <div id="photoDisplay" class="full-screen">
-      <div class="photo-ui">
-        <video id="camera" autoplay class="camera-box mirrored"></video>
-        <button class="photo-btn" onclick="takePhoto()">take photo</button>
-      </div>
-    </div>
-    <canvas id="snapshot" class="hidden"></canvas>
-  </div>
+
 
   <script src="script.js"></script>
 </body>
