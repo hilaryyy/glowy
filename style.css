@@ -1,0 +1,121 @@
+.great-vibes-regular {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dm-sans {
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  font-family: 'Great Vibes', cursive;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-top: 2rem;
+  text-shadow: 0 0 20px #fff;
+}
+
+.subtitle {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #ccc;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-top: 1rem;
+  text-shadow: 0 0 10px #fff;
+}
+
+.screen {
+  padding: 2rem;
+  transition: opacity 0.5s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+.mode-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+button {
+  background: #fff;
+  color: #030303;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "DM Sans";
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #fff;
+}
+
+/* Mode-specific buttons */
+.mood-btn {
+  background: #fff;
+  box-shadow: 0 0 10px #fffac4;
+}
+
+.strobe-btn {
+  background: #fff;
+  box-shadow: 0 0 10px #ffc4f7;
+}
+
+.gradient-btn {
+  background: #fff;
+  box-shadow: 0 0 10px #cec4ff;
+}
+
+/* Inputs */
+input[type="color"], input[type="range"] {
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 0 10px #fff;
+  background-color: #111;
+}
+
+/* Display areas */
+.full-screen {
+  width: 90vw;
+  height: 60vh;
+  margin: 2rem auto;
+  border-radius: 30px;
+  transition: background 0.5s ease;
+}
+
+
+/* Gradient animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+#gradientDisplay {
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease infinite;
+}
