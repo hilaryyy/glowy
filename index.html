@@ -5,47 +5,84 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>glowy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Text:ital@0;1&family=Great+Vibes&family=Hurricane&display=swap" rel="stylesheet">
-  
-<link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div id="home" class="screen">
     <h1>glowy</h1>
     <p class="subtitle">choose your mode</p>
-    <div class="mode-grid">
-      <button class="mood-btn" onclick="showMode('mood')">mood light</button>
-      <button class="strobe-btn" onclick="showMode('strobe')">strobe lights</button>
-      <button class="gradient-btn" onclick="showMode('gradient')">gradient</button>
+    <div class="mode-list">
+      <div class="mode-card mood-btn" onclick="showMode('mood')">mood light</div>
+      <div class="mode-card strobe-btn" onclick="showMode('strobe')">strobe lights</div>
+      <div class="mode-card gradient-btn" onclick="showMode('gradient')">gradient</div>
+      <div class="mode-card photo-btn" onclick="showMode('photo')">photo mode</div>
     </div>
   </div>
 
   <div id="mood" class="screen hidden">
-    <h2>mood light</h2>
-    <input type="color" id="moodColor" value="#ff6b6b" onchange="updateMoodColor()" />
-    <button onclick="goHome()">← home</button>
+    <div class="controls">
+      <input type="color" id="moodColor" value="#ff6b6b" onchange="updateMoodColor()" />
+      <button onclick="toggleSettings('moodSettings')">settings</button>
+      <button onclick="goHome()">home</button>
+    </div>
+    <div id="moodSettings" class="settings hidden">
+      <label>brightness</label>
+      <input type="range" min="0.1" max="1" step="0.1" value="1" onchange="updateBrightness('moodDisplay', this.value)" />
+    </div>
     <div id="moodDisplay" class="full-screen"></div>
   </div>
 
   <div id="strobe" class="screen hidden">
-    <h2>strobe lights</h2>
-    <input type="color" id="strobeColor1" value="#00f0ff" />
-    <input type="color" id="strobeColor2" value="#0077ff" />
-    <input type="range" id="strobeSpeed" min="100" max="2000" value="500" />
-    <button onclick="startStrobe()">start</button>
-    <button onclick="stopStrobe()">stop</button>
-    <button onclick="goHome()">← home</button>
+    <div class="controls">
+      <input type="color" id="strobeColor1" value="#00f0ff" />
+      <input type="color" id="strobeColor2" value="#0077ff" />
+      <input type="range" id="strobeSpeed" min="100" max="2000" value="500" />
+      <button onclick="toggleSettings('strobeSettings')">settings</button>
+      <button onclick="startStrobe()">start</button>
+      <button onclick="stopStrobe()">stop</button>
+      <button onclick="goHome()">home</button>
+    </div>
+    <div id="strobeSettings" class="settings hidden">
+      <label>brightness</label>
+      <input type="range" min="0.1" max="1" step="0.1" value="1" onchange="updateBrightness('strobeDisplay', this.value)" />
+    </div>
     <div id="strobeDisplay" class="full-screen"></div>
   </div>
 
   <div id="gradient" class="screen hidden">
-    <h2>gradient</h2>
-    <input type="color" id="gradColor1" value="#a64bf4" />
-    <input type="color" id="gradColor2" value="#ff6ec7" />
-    <button onclick="updateGradient()">update</button>
-    <button onclick="goHome()">← home</button>
+    <div class="controls">
+      <input type="color" id="gradColor1" value="#a64bf4" />
+      <input type="color" id="gradColor2" value="#ff6ec7" />
+      <button onclick="updateGradient()">update</button>
+      <button onclick="toggleSettings('gradientSettings')">settings</button>
+      <button onclick="goHome()">home</button>
+    </div>
+    <div id="gradientSettings" class="settings hidden">
+      <label>brightness</label>
+      <input type="range" min="0.1" max="1" step="0.1" value="1" onchange="updateBrightness('gradientDisplay', this.value)" />
+    </div>
     <div id="gradientDisplay" class="full-screen"></div>
+  </div>
+
+  <div id="photo" class="screen hidden">
+    <div class="controls">
+      <button onclick="startCamera()">start camera</button>
+      <button onclick="toggleSettings('photoSettings')">settings</button>
+      <button onclick="goHome()">home</button>
+    </div>
+    <div id="photoSettings" class="settings hidden">
+      <label>timer (seconds)</label>
+      <input type="number" id="photoTimer" min="0" max="10" value="0" />
+    </div>
+    <div id="photoDisplay" class="full-screen">
+      <div class="photo-ui">
+        <video id="camera" autoplay class="camera-box"></video>
+        <button class="photo-btn" onclick="takePhoto()"></button>
+      </div>
+    </div>
+    <canvas id="snapshot" class="hidden"></canvas>
   </div>
 
   <script src="script.js"></script>
