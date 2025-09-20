@@ -109,3 +109,19 @@ function takePhoto() {
     }, 'image/png');
   }, timer * 1000);
 }
+
+function startCamera() {
+  const video = document.getElementById('camera');
+  const isFront = currentFacing === 'user';
+
+  navigator.mediaDevices.getUserMedia({
+    video: { facingMode: currentFacing }
+  })
+  .then(stream => {
+    video.srcObject = stream;
+    video.classList.toggle('mirrored', isFront);
+  })
+  .catch(() => {
+    alert('camera access denied');
+  });
+}
