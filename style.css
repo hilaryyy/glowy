@@ -1,121 +1,145 @@
-.great-vibes-regular {
-  font-family: "Great Vibes", cursive;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.dm-sans {
-  font-family: "DM Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: weight;
-  font-style: normal;
-}
-
+/* fonts */
 body {
   margin: 0;
-  font-family: 'Great Vibes', cursive;
+  font-family: "dm sans", sans-serif;
   background-color: #000;
   color: #fff;
   text-align: center;
   overflow-x: hidden;
 }
 
+/* headers */
+h1, h2 {
+  font-family: "great vibes", cursive;
+  text-shadow: 0 0 20px #fff;
+  margin-top: 2rem;
+}
+
 h1 {
   font-size: 3rem;
-  margin-top: 2rem;
-  text-shadow: 0 0 20px #fff;
 }
 
 .subtitle {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 2rem;
   color: #ccc;
+  font-family: "dm sans", sans-serif;
 }
 
-h2 {
-  font-size: 2rem;
-  margin-top: 1rem;
-  text-shadow: 0 0 10px #fff;
-}
-
+/* layout */
 .screen {
-  padding: 2rem;
-  transition: opacity 0.5s ease;
+  padding: 1rem;
 }
 
 .hidden {
   display: none;
 }
 
-.mode-grid {
+/* home page cards */
+.mode-list {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
+  width: 80%;
+  margin: 0 auto;
 }
 
-button {
+.mode-card {
+  padding: 1.5rem;
+  border-radius: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 0 20px #fff;
+  transition: transform 0.3s ease;
   background: #fff;
   color: #030303;
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 0 10px #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: "DM Sans";
+  font-family: "dm sans", sans-serif;
 }
 
-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #fff;
+.mode-card:hover {
+  transform: scale(1.03);
 }
 
-/* Mode-specific buttons */
-.mood-btn {
-  background: #fff;
-  box-shadow: 0 0 10px #fffac4;
-}
+/* mode-specific glow */
+.mood-btn { box-shadow: 0 0 10px #fffac4; }
+.strobe-btn { box-shadow: 0 0 10px #ffc4f7; }
+.gradient-btn { box-shadow: 0 0 10px #cec4ff; }
+.photo-btn { box-shadow: 0 0 10px #709dff; }
 
-.strobe-btn {
-  background: #fff;
-  box-shadow: 0 0 10px #ffc4f7;
-}
-
-.gradient-btn {
-  background: #fff;
-  box-shadow: 0 0 10px #cec4ff;
-}
-
-/* Inputs */
-input[type="color"], input[type="range"] {
+/* controls and settings */
+.controls {
   margin: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.settings {
+  margin: 1rem;
+}
+
+input[type="color"],
+input[type="range"],
+input[type="number"] {
   padding: 0.5rem;
   border-radius: 8px;
   border: none;
   box-shadow: 0 0 10px #fff;
   background-color: #111;
+  color: #fff;
+  font-family: "dm sans", sans-serif;
 }
 
-/* Display areas */
+/* buttons */
+button {
+  background-color: #fff;
+  color: #030303;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #fff;
+  cursor: pointer;
+  font-family: "dm sans", sans-serif;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #eee;
+}
+
+/* display area */
 .full-screen {
-  width: 90vw;
-  height: 60vh;
-  margin: 2rem auto;
-  border-radius: 30px;
-  transition: background 0.5s ease;
+  width: 100vw;
+  height: 85vh;
+  margin: 0 auto;
+  border-radius: 0;
+  box-shadow: 0 0 80px 30px #fff;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  object-fit: cover;
 }
 
-
-/* Gradient animation */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* photo mode */
+#photoDisplay {
+  background-color: #709dff;
+  box-shadow: 0 0 80px 30px #709dff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#gradientDisplay {
-  background-size: 200% 200%;
-  animation: gradientShift 5s ease infinite;
+.photo-ui {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.camera-box {
+  width: 300px;
+  height: 200px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 0 20px #fff;
 }
