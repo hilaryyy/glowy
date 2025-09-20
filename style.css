@@ -59,7 +59,7 @@ h1 {
 .mood-btn { box-shadow: 0 0 10px #fffac4; }
 .strobe-btn { box-shadow: 0 0 10px #ffc4f7; }
 .gradient-btn { box-shadow: 0 0 10px #cec4ff; }
-.photo-btn { box-shadow: 0 0 10px #709dff; }
+
 
 .controls {
   margin: 1rem;
@@ -112,20 +112,4 @@ button:hover {
   object-fit: cover;
 }
 
-#photoDisplay {
-  background-color: #709dff;
-  box-shadow: 0 0 80px 30px #709dff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.photo-ui {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.camera-box {
-  width:
