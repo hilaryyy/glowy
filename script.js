@@ -126,3 +126,31 @@ function startCamera() {
   });
 }
 
+let currentFacing = 'environment';
+
+function updatePhotoColor() {
+  const color = document.getElementById('photoColor').value;
+  const display = document.getElementById('photoDisplay');
+  display.style.backgroundColor = color;
+  display.style.boxShadow = `0 0 80px 30px ${color}`;
+}
+
+function startCamera() {
+  const video = document.getElementById('camera');
+  navigator.mediaDevices.getUserMedia({
+    video: { facingMode: currentFacing }
+  })
+  .then(stream => {
+    video.srcObject = stream;
+  })
+  .catch(() => {
+    alert('camera access denied');
+  });
+}
+
+function flipCamera() {
+  currentFacing = currentFacing === 'environment' ? 'user' : 'environment';
+  startCamera();
+}
+
+
